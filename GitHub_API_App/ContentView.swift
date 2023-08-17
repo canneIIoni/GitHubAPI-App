@@ -9,9 +9,16 @@ import SwiftUI
 
 struct ContentView: View {
     
+    @Binding var userName:String
     @State private var user: GitHubUser?
+    @State public var name: String = ""
+    var searched:Bool = false
+    
     
     var body: some View {
+        
+        
+
         VStack(spacing: 20){
             
             AsyncImage(url: URL(string: user?.avatarUrl ?? "")) { image in
@@ -32,7 +39,7 @@ struct ContentView: View {
             
             Text(user?.bio ?? "Bio Placeholder")
                 .padding()
-            
+             
             Spacer()
         }
         .padding()
@@ -52,7 +59,7 @@ struct ContentView: View {
     }
     
     func getUser() async throws -> GitHubUser {
-        let endpoint = "https://api.github.com/users/canneIIoni"
+        let endpoint = "https://api.github.com/users/\(userName)"
         
         guard let url = URL(string: endpoint) else {
             
@@ -79,11 +86,11 @@ struct ContentView: View {
     
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ContentView(userName: )
+//    }
+//}
 
 struct GitHubUser: Codable{
     let login:String

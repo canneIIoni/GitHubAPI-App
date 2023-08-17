@@ -11,7 +11,7 @@ import SwiftUI
 struct GitHub_API_AppApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            SearchView()
         }
     }
 }
