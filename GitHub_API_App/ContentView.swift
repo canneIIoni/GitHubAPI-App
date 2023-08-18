@@ -40,6 +40,14 @@ struct ContentView: View {
             Text(user?.bio ?? "Bio Placeholder")
                 .padding()
              
+            HStack{
+                Text("\(user?.followers ?? 0) followers")
+                    .padding()
+
+                Text("following \(user?.following ?? 0)")
+                    .padding()
+            }
+            
             Spacer()
         }
         .padding()
@@ -96,6 +104,8 @@ struct GitHubUser: Codable{
     let login:String
     let avatarUrl:String
     let bio:String
+    let followers:Int
+    let following:Int
 }
 
 enum GHError: Error {
